@@ -1,0 +1,67 @@
+package Maestro_sac;
+
+import java.util.Scanner;
+
+public class AplicaPersona {
+
+    static Scanner teclado = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        
+            ArregloPersona per = new ArregloPersona ("Maestro SAC");
+          
+            int opcion;
+            do{
+            System.out.println("\tMenu de Opciones");
+            System.out.println("================");
+            System.out.println("[1] Ingresar Datos de las personas");
+            System.out.println("[2] Eliminar datos de las personas");
+            System.out.println("[3] Mostrar datos de las personas");
+            System.out.println("[4] Buscar una persona y mostrar sus datos");
+            System.out.println("================");
+            System.out.println("[0] Salir");
+            
+            System.out.println("\nIngrese una opcion(0-4): ");
+            opcion = teclado.nextInt();
+            System.out.println();
+            
+            if(opcion == 1){
+            
+                 
+                 for (int i = 0; i < 4; i++) {
+            
+                  System.out.println("Ingrese datos del trabajador " + i);
+                  System.out.println("Ingrese codigo: ");
+                  String codigo = teclado.next();
+                  System.out.println("Ingrese nombre: ");
+                  String nombre = teclado.next();
+                  System.out.println("Ingrese tarifa (Monto que gana por hora): ");
+                  double tarifa = teclado.nextDouble();
+                  System.out.println("Ingrese horas (Horas que trabaja al mes): ");
+                  int horas = teclado.nextInt();
+                
+                  per.registrar(i, codigo, nombre, tarifa, horas);
+                  
+                 }
+                 
+            }else if(opcion == 2){
+                System.out.println("---- Eliminar Datos ----");
+                System.out.println("---------------------------");
+                per.eliminar();
+                System.out.println("---------------------------");
+            }else if (opcion == 3){
+                System.out.println("---- Consulta de Datos ----");
+                System.out.println("---------------------------");
+                per.consultar();
+                System.out.println("---------------------------");
+            }else if (opcion == 4){
+                System.out.println("---- Busqueda de Datos ----");
+                System.out.println("---------------------------");
+                per.buscar();
+                System.out.println("---------------------------");
+            }
+       
+            }while(opcion !=0);
+    }   
+    
+}
