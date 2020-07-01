@@ -1,0 +1,63 @@
+package Maestro_sac;
+
+import java.util.Scanner;
+
+public class ArregloPersona {
+    
+    Scanner teclado = new Scanner (System.in);
+    //Atributos
+    private String nombre;
+    private Persona [] per = new Persona [4];
+    
+
+    //Constructor
+    public ArregloPersona (String nombre){
+        this.nombre = nombre;
+            for (int i = 0; i < 4; i++) {
+            per[i] = new Persona();
+             }
+    }
+    
+    //Almacenar
+    public void registrar(int pos, String cod, String nombre, double tarifa, int horas){
+        per[pos].registrar(cod, nombre, tarifa, horas);
+    }
+    
+    
+    //Consultar
+    public void consultar(){
+        System.out.println("Empresa :" + nombre);
+        for (int i = 0; i < 4; i++) {
+            per[i].mostrar();
+        }
+        
+    }
+    
+    //Eliminar datos
+    public void eliminar(){
+        String codBuscar;
+        System.out.println("Ingresar codigo: ");
+        codBuscar = teclado.next();
+        for (int i = 0; i < per.length; i++) {
+            if(per[i].retCodigo().equals(codBuscar)){
+               per[i] = new Persona();
+            }
+        }
+        System.out.println("Datos eliminados...");
+    }
+    
+    //Buscar por codigo
+    public void buscar(){
+        String codBuscar;
+        System.out.println("Ingresar codigo: ");
+        codBuscar = teclado.next();
+        for (int i = 0; i < per.length; i++) {
+            if(per[i].retCodigo().equals(codBuscar)){
+               per[i].mostrar();
+            }
+        }
+        
+    }
+      
+    
+}
